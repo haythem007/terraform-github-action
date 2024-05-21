@@ -9,7 +9,7 @@ terraform {
  backend "azurerm" {
     resource_group_name  = "terraformrg"
     storage_account_name = "terraformstorage7c6c24c7"
-    container_name       = "tfstate"
+    container_name       = "tfs"
     key                  = "dev.terraform.tfstate"
   }
 }
@@ -17,11 +17,6 @@ terraform {
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
   features {}
- storage_account {
-    lock {
-      timeout = "10m"
-    }
-  }
   # subscription_id = var.subscription_id
   # client_id       = var.client_id
   # client_secret   = var.client_secret
