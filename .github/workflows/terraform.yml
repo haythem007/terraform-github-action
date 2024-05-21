@@ -42,6 +42,6 @@ jobs:
 
     # Generates an execution plan for Terraform
     - name: terraform Apply
-      run: terraform apply -auto-approve -var-file="${{ github.workspace }}/src/terraform/test.tfvars"
+      run: terraform apply -auto-approve
       if: ${{inputs.tf_destroy}} == false
       working-directory: ${{ env.ROOT_PATH }}
