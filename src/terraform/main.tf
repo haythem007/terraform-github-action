@@ -48,8 +48,8 @@ module "app_service_plan" {
 
 module "app_service" {
   source                    = "./modules/app service"
-  app_service_name          = "wa-haythemmarouani-t
-   location                 = "West Europe"
-  resource_group_name       = var.resource_group_name
+  app_service_name          = "wa-haythemmarouani-t"
+  location                 = "West Europe"
+  resource_group_name      = "rg-haythem-example-resources"
   app_service_plan_id       = module.app_service_plan.app_service_plan_id
 }
