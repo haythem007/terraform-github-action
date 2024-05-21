@@ -7,8 +7,8 @@ terraform {
   }
 
  backend "azurerm" {
-    resource_group_name  = "rg-haythem-friday"
-    storage_account_name = "sttfstatemgt01"
+    resource_group_name  = "terraformrg"
+    storage_account_name = "terraformstorage7c6c24c7"
     container_name       = "tfstate"
     key                  = "dev.terraform.tfstate"
   }
