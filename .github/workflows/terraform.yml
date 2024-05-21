@@ -39,7 +39,11 @@ jobs:
       run: terraform init
       working-directory: ${{ env.ROOT_PATH }}
 
-
+   # Generates an execution plan for Terraform
+    - name: terraform Plan
+      run: terraform plan -lock=false
+      working-directory: ${{ env.ROOT_PATH }}
+      
     # Generates an execution plan for Terraform
     - name: terraform Apply
       run: terraform apply -auto-approve
