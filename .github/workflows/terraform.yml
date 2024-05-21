@@ -2,8 +2,7 @@ name: 'tf deploy to azure'
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
+   
 
 env: 
   ROOT_PATH: '${{ github.workspace }}/src/terraform'
