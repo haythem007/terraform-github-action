@@ -38,18 +38,18 @@ resource "azurerm_resource_group" "rg" {
 
 module "app_service_plan" {
   source                   = "./modules/app service plan"
-  app_service_plan_name    = local.default_app_service_plan_name
-  location                 = var.location
-  resource_group_name      = var.resource_group_name
-  app_service_plan_tier    = var.app_service_plan_tier
-  app_service_plan_size    = var.app_service_plan_size
+  app_service_plan_name    = "asp-haythemmarouani-t-002"
+  location                 = "West Europe"
+  resource_group_name      = "rg-haythem-example-resources"
+  app_service_plan_tier    = "Standard"
+  app_service_plan_size    = "F1"
 }
 
 
 module "app_service" {
   source                    = "./modules/app service"
-  app_service_name          = local.default_app_service_name
-  location                  = var.location
+  app_service_name          = "wa-haythemmarouani-t
+   location                 = "West Europe"
   resource_group_name       = var.resource_group_name
   app_service_plan_id       = module.app_service_plan.app_service_plan_id
 }
