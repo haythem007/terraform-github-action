@@ -20,6 +20,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+         # Add a task to release the lock
+      - name: Release Terraform State Lock
+        run: |
+          if [ -f "terraform.tfstate.lock" ]; then
+            rm terraform.tfstate.lock
+          fi
+
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
