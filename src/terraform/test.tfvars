@@ -1,16 +1,9 @@
 # Test environment variables
 
-
-
-#location
-location= "westeurope"
-
-#app service plan
-app_service_plan_name = "haythemmarouani"
-
-
-#app service 
-app_service_name = "marouanihaythem"
+resource_group_name   = "my-marouanihaythem-group"
+location              = "East Europe"
+app_service_plan_name = "my-app-marouanihaythem-service-plan"
+app_service_name      = "my-app-marouanihaythem-service"
 
 
 
