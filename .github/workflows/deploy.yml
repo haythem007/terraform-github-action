@@ -22,10 +22,7 @@ jobs:
 
          # Add a task to release the lock
       - name: Release Terraform State Lock
-        run: |
-          if [ -f "terraform.tfstate.lock" ]; then
-            rm terraform.tfstate.lock
-          fi
+        run: terraform force-unlock d19bde60-d082-2289-b244-2fa1c1dd4fb0
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
