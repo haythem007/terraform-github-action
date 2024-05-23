@@ -24,24 +24,28 @@ provider "azurerm" {
 }
 
 
+provider "azurerm" {
+  features {}
+}
+
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
 }
 
-resource "azurerm_app_service_plan" "app_service_plan" {
-  name                = var.app_service_plan_name
-  location            = azurerm_resource_group.rg.location
+module "app_service_plan" {
+  source                = "./modules/app service/app_service_plan"
+  app_service_plan_name = var.app_service_plan_name
+  location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
-  sku {
-    tier = "Free"
-    size = "F1"
-  }
+  sku_tier            = var.sku_tier
+  sku_size            = var.sku_size
 }
 
-resource "azurerm_app_service" "app_service" {
-  name                = var.app_service_name
-  location            = azurerm_resource_group.rg.location
+module "app_service" {
+  source              = "./modules/app service plan/app_service"
+  app_service_name    = var.app_service_name
+  location            = var.location
   resource_group_name = azurerm_resource_group.rg.name
-  app_service_plan_id = azurerm_app_service_plan.app_service_plan.id
+  app_service_plan_id = module.app_service_plan.app_service_plan_id
 }
