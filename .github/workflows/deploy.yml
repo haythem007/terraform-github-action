@@ -20,10 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-         # Add a task to release the lock
-      - name: Release Terraform State Lock
-        run: terraform force-unlock d19bde60-d082-2289-b244-2fa1c1dd4fb0
-
+      
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
         with:
@@ -36,6 +33,11 @@ jobs:
       - name: Terraform Init
         run: terraform init
         working-directory: ${{ env.ROOT_PATH }}
+
+           # Add a task to release the lock
+      - name: Release Terraform State Lock
+        run: terraform force-unlock d19bde60-d082-2289-b244-2fa1c1dd4fb0
+
 
       - name: Terraform Plan
         run: terraform plan -var-file="test.tfvars"
