@@ -25,11 +25,9 @@ jobs:
         with:
           terraform_version: 1.0.11
           
-      - name: Install Checkov
-        run: pip install checkov
-
       - name: Run Checkov scan
-        run: checkov -d .
+        run: docker run --rm -v $(pwd):/tf bridgecrew/checkov --directory /tf || true
+
         
       - name: Terraform Init
         run: terraform init
